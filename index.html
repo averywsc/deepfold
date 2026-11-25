@@ -1,0 +1,1191 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Deepfold</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23ff7ad9'/%3E%3Cstop offset='1' stop-color='%236f7cff'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='14' fill='%2308060f'/%3E%3Cg fill='none' stroke='url(%23g)' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'%3E%3Cpath d='M32 9 52 20.5v23L32 55 12 43.5v-23z'/%3E%3Cpath d='M32 9v46M12 20.5 52 43.5M52 20.5 12 43.5' opacity='.55'/%3E%3Cpath d='M32 22 42 28v12L32 46 22 40V28z' opacity='.9'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="icon" type="image/png" sizes="32x32" href="data:image/png;base64,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">
+<link rel="apple-touch-icon" href="data:image/png;base64,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">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  /* Layout: full-bleed shader view. Wordmark top-left, one quiet row of controls along the bottom: modes left, colour / intensity / sound right. Single dark look by choice. */
+  :root {
+    --void: #08060f;
+    --text: #ece8ff;
+    --text-dim: #8d88a8;
+    --edge: rgba(200, 190, 255, 0.22);
+    --accent: #ff7ad9;
+    --display: "Unbounded", "Helvetica Neue", Arial, sans-serif;
+    --mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+    color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  html, body { height: 100%; }
+  body {
+    margin: 0;
+    background: var(--void);
+    color: var(--text);
+    font-family: var(--mono);
+    overflow: hidden;
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+    padding-block: 0;
+    touch-action: none;
+    -webkit-user-select: none;
+    user-select: none;
+  }
+  #view { position: fixed; inset: 0; width: 100%; height: 100%; display: block; cursor: grab; }
+  #view.down { cursor: grabbing; }
+  h1 {
+    position: fixed;
+    top: env(safe-area-inset-top, 0px);
+    left: max(16px, env(safe-area-inset-left, 0px));
+    margin: 0;
+    padding-top: 24px;
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: 0.78rem;
+    letter-spacing: 0.34em;
+    text-transform: uppercase;
+    line-height: 1;
+    pointer-events: none;
+    text-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+  }
+  .prog {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    transform: scaleX(0);
+    transform-origin: left;
+    background: linear-gradient(90deg, var(--accent), #7a8cff);
+    opacity: 0;
+    transition: opacity 0.6s;
+    pointer-events: none;
+    z-index: 5;
+  }
+  .prog.on { opacity: 0.9; }
+  .caption {
+    position: fixed;
+    top: env(safe-area-inset-top, 0px);
+    left: max(16px, env(safe-area-inset-left, 0px));
+    margin: 0;
+    padding-top: 46px;
+    font-size: 0.62rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    text-shadow: 0 0 16px rgba(0, 0, 0, 0.9);
+    pointer-events: none;
+  }
+  .hint {
+    position: fixed;
+    top: env(safe-area-inset-top, 0px);
+    right: max(16px, env(safe-area-inset-right, 0px));
+    margin: 0;
+    padding-top: 25px;
+    font-size: 0.64rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    text-shadow: 0 0 16px rgba(0, 0, 0, 0.8);
+    pointer-events: none;
+    transition: opacity 2s ease;
+  }
+  .hint.quiet { opacity: 0; }
+  .bar {
+    position: fixed;
+    left: 0; right: 0; bottom: 0;
+    padding: 0 max(16px, env(safe-area-inset-right, 0px)) calc(16px + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px));
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2px 20px;
+    pointer-events: none;
+  }
+  .bar > * { pointer-events: auto; }
+  .group { display: flex; align-items: center; gap: 4px; }
+  .txt {
+    appearance: none;
+    border: 0;
+    background: transparent;
+    color: var(--text-dim);
+    font: inherit;
+    font-size: 0.68rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    height: 32px;
+    padding: 0 8px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    position: relative;
+    text-shadow: 0 0 14px rgba(0, 0, 0, 0.9);
+    transition: color 0.25s;
+  }
+  .txt:hover { color: var(--text); }
+  .txt[aria-pressed="true"] { color: var(--text); }
+  .modes .txt::after {
+    content: "";
+    position: absolute;
+    left: 8px; right: 8px; bottom: 4px;
+    height: 1px;
+    background: var(--text);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s ease;
+  }
+  .modes .txt[aria-pressed="true"]::after { transform: scaleX(1); }
+  .dot {
+    appearance: none;
+    border: 0;
+    background: transparent;
+    width: 28px;
+    height: 32px;
+    padding: 0;
+    cursor: pointer;
+    display: grid;
+    place-items: center;
+  }
+  .dot i {
+    display: block;
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    opacity: 0.5;
+    transition: transform 0.3s, opacity 0.3s, box-shadow 0.3s;
+  }
+  .dot:hover i { opacity: 0.9; }
+  .dot[aria-pressed="true"] i { opacity: 1; transform: scale(1.35); box-shadow: 0 0 0 3px rgba(236, 232, 255, 0.16); }
+  .sep { width: 1px; height: 14px; background: var(--edge); margin: 0 8px; }
+  .eq { display: inline-flex; align-items: flex-end; gap: 2px; height: 12px; }
+  .eq span { width: 2px; height: 3px; background: currentColor; border-radius: 1px; }
+  #sound[aria-pressed="true"] .eq span { animation: eq 1.1s ease-in-out infinite; }
+  #sound[aria-pressed="true"] .eq span:nth-child(2) { animation-delay: -0.35s; animation-duration: 0.9s; }
+  #sound[aria-pressed="true"] .eq span:nth-child(3) { animation-delay: -0.7s; animation-duration: 1.3s; }
+  @keyframes eq { 0%, 100% { height: 3px; } 50% { height: 12px; } }
+  .txt:focus-visible, .dot:focus-visible { outline: 1px solid var(--accent); outline-offset: 3px; }
+  #fallback {
+    position: fixed; inset: 0; display: none; align-items: center; justify-content: center;
+    padding: 24px; text-align: center; font-size: 0.85rem; line-height: 1.7; color: var(--text-dim);
+  }
+  @media (prefers-reduced-motion: reduce) { #sound[aria-pressed="true"] .eq span { animation: none; height: 8px; } }
+  @media (max-width: 640px) { .hint, #full { display: none; } .hint.pending { display: block; left: max(16px, env(safe-area-inset-left, 0px)); right: auto; top: calc(env(safe-area-inset-top, 0px) + 64px); padding-top: 0; } .bar { justify-content: flex-start; } .txt { padding: 0 6px; letter-spacing: 0.12em; } .modes { flex-basis: 100%; } .sep { margin: 0 4px; } }
+</style>
+
+<canvas id="view" aria-label="An animated flight through glowing generative worlds"></canvas>
+<div id="fallback"><p>This view needs WebGL, which this browser has turned off.<br>Try another browser or enable hardware acceleration.</p></div>
+
+<div class="prog" id="prog" aria-hidden="true"></div>
+<h1>Deepfold</h1>
+<p class="caption" id="caption" aria-live="polite">Lattice · Prism</p>
+<p class="hint" id="hint">Drag to steer · Hold to dive · ← → mode · J journey · M sound</p>
+
+<div class="bar">
+  <div class="group modes" role="group" aria-label="Mode">
+    <button class="txt" data-m="0" type="button" aria-pressed="true">Lattice</button>
+    <button class="txt" data-m="1" type="button" aria-pressed="false">Mandala</button>
+    <button class="txt" data-m="2" type="button" aria-pressed="false">Gyroid</button>
+    <button class="txt" data-m="3" type="button" aria-pressed="false">Nebula</button>
+    <button class="txt" data-m="4" type="button" aria-pressed="false">Bulb</button>
+  </div>
+  <div class="group" role="group" aria-label="Colour, intensity and sound">
+    <button class="dot" data-i="0" title="Prism" aria-label="Prism" aria-pressed="true"><i></i></button>
+    <button class="dot" data-i="1" title="Coral" aria-label="Coral" aria-pressed="false"><i></i></button>
+    <button class="dot" data-i="2" title="Ice" aria-label="Ice" aria-pressed="false"><i></i></button>
+    <button class="dot" data-i="3" title="Gilt" aria-label="Gilt" aria-pressed="false"><i></i></button>
+    <span class="sep"></span>
+    <button class="txt" id="trip" type="button" title="Intensity" aria-label="Intensity: Trip"><span id="tripLabel">Trip</span></button>
+    <button class="txt" id="journey" type="button" title="Travel through every world, building to a peak before each jump" aria-pressed="false">Journey</button>
+    <button class="txt" id="full" type="button" title="Fullscreen">Full</button>
+    <span class="sep"></span>
+    <button class="txt" id="sound" type="button" aria-pressed="true"><span class="eq" aria-hidden="true"><span></span><span></span><span></span></span><span id="soundLabel">Sound on</span></button>
+  </div>
+</div>
+
+<script>
+(() => {
+  const VERT = "attribute vec2 a;void main(){gl_Position=vec4(a,0.,1.);}";
+  const HEAD = `precision highp float;
+uniform vec2 R; uniform float T; uniform float Z; uniform vec2 M; uniform float W; uniform float A;
+uniform float Q; uniform float F; uniform float H;
+uniform vec3 pa, pb, pc, pd;
+mat2 rot(float a){ float c = cos(a), s = sin(a); return mat2(c, -s, s, c); }
+vec3 pal(float x){ return pa + pb * cos(6.28318 * (pc * (x + H) + pd)); }
+vec3 finish(vec3 acc, vec2 uv){
+  vec3 bg = mix(pal(0.1) * 0.03, pal(0.5) * 0.07, smoothstep(-0.6, 0.8, uv.y));
+  vec3 col = bg + acc;
+  col = 1.0 - exp(-col * 1.25);
+  col = pow(col, vec3(0.86));
+  col *= 1.0 - 0.55 * dot(uv, uv);
+  col += (fract(sin(dot(gl_FragCoord.xy, vec2(12.9898, 78.233))) * 43758.5453) - 0.5) / 160.0;
+  return col * F;
+}`;
+  const SHADERS = [
+    HEAD + `float map(vec3 p, out float orb){
+  p.xy *= rot(p.z * 0.07 + T * 0.03);
+  p.z = mod(p.z, 4.0) - 2.0;
+  float s = 1.0;
+  orb = 1e3;
+  float a = 0.55 + 0.08 * sin(T * 0.07);
+  vec3 off = vec3(1.0 + A * 0.03 + 0.08 * sin(T * 0.05), 0.75, 0.5 + 0.05 * cos(T * 0.06));
+  for (int i = 0; i < 5; i++){
+    p = abs(p) - off;
+    p.xy *= rot(a + 0.12 * float(i));
+    p.yz *= rot(0.45);
+    float k = 1.42;
+    p *= k; s *= k;
+    orb = min(orb, dot(p, p));
+  }
+  return (length(p.xy) - 0.05) / s;
+}
+void main(){
+  vec2 uv = (gl_FragCoord.xy - 0.5 * R) / R.y;
+  vec3 ro = vec3(0.22 * sin(T * 0.21), 0.18 * cos(T * 0.17), Z);
+  vec3 rd = vec3(uv, 1.15 - W * 0.35);
+  rd.xy += Q * 0.05 * sin(uv.yx * 5.0 + T * 0.7);
+  rd = normalize(rd);
+  rd.xy *= rot(M.x * 0.25 + 0.05 * sin(T * 0.11));
+  rd.yz *= rot(-M.y * 0.45);
+  rd.xz *= rot(M.x * 0.7);
+  float t = 0.0;
+  vec3 acc = vec3(0.0);
+  for (int i = 0; i < 70; i++){
+    vec3 p = ro + rd * t;
+    float o;
+    float d = map(p, o);
+    float glow = exp(-abs(d) * 120.0);
+    float fog = exp(-t * 0.09);
+    acc += pal(log(o + 1.0) * 0.18 + p.z * 0.04 + T * 0.015) * glow * fog * (0.4 + 0.18 * W) * (1.0 + A * 1.1);
+    acc += pal(log(o + 1.0) * 0.12 + p.z * 0.03 + 0.3) * exp(-abs(d) * 12.0) * fog * 0.006;
+    t += max(abs(d) * 0.7, 0.04);
+    if (t > 26.0) break;
+  }
+  gl_FragColor = vec4(finish(acc, uv), 1.0);
+}`,
+    HEAD + `vec3 mandala(vec2 uv, float N, float freq, float warpAmt, float spin, float seed, float weight){
+  float r = length(uv) + 1e-4;
+  float a = atan(uv.y, uv.x) + spin + Q * 0.7 * r + 0.5 * sin(T * 0.05 + seed);
+  float seg = 6.28318 / N;
+  a = abs(mod(a, seg) - seg * 0.5);
+  float v = 0.34 / (r + 0.07) + Z * (0.5 + 0.12 * seed);
+  vec2 q = vec2(a * freq, v);
+  vec3 acc = vec3(0.0);
+  for (int i = 0; i < 5; i++){
+    float fi = float(i);
+    q += warpAmt * sin(q.yx * (1.1 + 0.2 * fi) + T * 0.25 + fi * 1.9 + seed);
+    float l = min(abs(sin(q.x * 2.0)), abs(sin(q.y * 2.0)));
+    acc += pal(fi * 0.17 + v * 0.03 + q.x * 0.05 + seed * 0.2) * (0.022 / (l + 0.022)) * weight;
+  }
+  return acc * smoothstep(0.0, 0.35, r);
+}
+void main(){
+  vec2 uv = (gl_FragCoord.xy - 0.5 * R) / R.y;
+  uv += M * vec2(0.14, 0.09);
+  uv += Q * 0.025 * sin(uv.yx * 7.0 + T * 0.8);
+  float r = length(uv) + 1e-4;
+  vec3 acc = mandala(uv, 10.0, 2.4, 0.32, T * 0.04, 0.0, 0.9);
+  acc += mandala(uv * 1.65, 14.0, 3.1, 0.22, -T * 0.055, 1.7, 0.4);
+  acc *= (1.0 + A * 0.9);
+  // a ring leaves the centre every few seconds and is pushed harder by the music
+  float ph = fract(T * 0.11);
+  acc += pal(0.55 + ph) * exp(-abs(r - ph * 1.15) * 26.0) * (1.0 - ph) * (0.28 + A * 0.5);
+  acc += pal(0.3 + T * 0.01) * 0.1 / (r * r * 40.0 + 0.5) * (1.0 + A);
+  gl_FragColor = vec4(finish(acc, uv), 1.0);
+}`,
+    HEAD + `float gy(vec3 p){ return dot(sin(p), cos(p.zxy)); }
+float map(vec3 p, out float g){
+  float g1 = gy(p * 1.25 + vec3(0.0, T * 0.05, 0.0)) / 1.25;
+  float g2 = gy(p * 3.3 + T * 0.12) / 3.3;
+  g = g1;
+  return min(abs(g1) - 0.015, abs(g2) * 0.8 - 0.004);
+}
+void main(){
+  vec2 uv = (gl_FragCoord.xy - 0.5 * R) / R.y;
+  vec3 ro = vec3(0.7 * sin(Z * 0.23), 0.7 * cos(Z * 0.19), Z);
+  vec3 rd = vec3(uv, 1.0 - W * 0.3);
+  rd.xy += Q * 0.06 * sin(uv.yx * 4.0 + T * 0.6);
+  rd = normalize(rd);
+  rd.xy *= rot(M.x * 0.3 + 0.1 * sin(T * 0.09));
+  rd.yz *= rot(-M.y * 0.5);
+  rd.xz *= rot(M.x * 0.8);
+  float t = 0.0;
+  vec3 acc = vec3(0.0);
+  for (int i = 0; i < 64; i++){
+    vec3 p = ro + rd * t;
+    float g;
+    float d = map(p, g);
+    float glow = exp(-abs(d) * 90.0);
+    float fog = exp(-t * 0.11);
+    acc += pal(p.z * 0.045 + g * 0.35 + t * 0.02) * glow * fog * (0.07 + 0.04 * W) * (1.0 + A * 1.0);
+    vec3 cp = p * 2.2 + vec3(0.0, T * 0.05, 0.0);
+    vec3 ci = floor(cp), cf = fract(cp) - 0.5;
+    float h = fract(sin(dot(ci, vec3(12.9898, 78.233, 37.719))) * 43758.5453);
+    vec3 off = (vec3(fract(h * 7.0), fract(h * 13.0), fract(h * 23.0)) - 0.5) * 0.6;
+    acc += pal(h + 0.3 + p.z * 0.02) * exp(-length(cf - off) * 30.0) * step(0.62, h) * fog * 0.1 * (1.0 + A * 1.5);
+    t += max(abs(d) * 0.75, 0.035);
+    if (t > 24.0) break;
+  }
+  gl_FragColor = vec4(finish(acc, uv), 1.0);
+}`,
+    HEAD + `float hash(vec3 p){ p = fract(p * 0.3183099 + 0.1); p *= 17.0; return fract(p.x * p.y * p.z * (p.x + p.y + p.z)); }
+float vnoise(vec3 x){
+  vec3 i = floor(x), f = fract(x); f = f * f * (3.0 - 2.0 * f);
+  return mix(mix(mix(hash(i), hash(i + vec3(1,0,0)), f.x), mix(hash(i + vec3(0,1,0)), hash(i + vec3(1,1,0)), f.x), f.y),
+             mix(mix(hash(i + vec3(0,0,1)), hash(i + vec3(1,0,1)), f.x), mix(hash(i + vec3(0,1,1)), hash(i + vec3(1,1,1)), f.x), f.y), f.z);
+}
+float fbm(vec3 p){
+  float a = 0.5, s = 0.0;
+  for (int i = 0; i < 4; i++){ s += a * vnoise(p); p = p * 2.03 + vec3(1.7, 9.2, 3.1); a *= 0.5; }
+  return s;
+}
+void main(){
+  vec2 uv = (gl_FragCoord.xy - 0.5 * R) / R.y;
+  vec3 ro = vec3(0.4 * sin(T * 0.05), 0.3 * cos(T * 0.04), Z * 0.7);
+  vec3 rd = vec3(uv, 1.0 - W * 0.3);
+  rd.xy += Q * 0.05 * sin(uv.yx * 4.0 + T * 0.5);
+  rd = normalize(rd);
+  rd.xy *= rot(M.x * 0.25 + 0.06 * sin(T * 0.07));
+  rd.yz *= rot(-M.y * 0.4);
+  rd.xz *= rot(M.x * 0.6);
+  vec3 acc = vec3(0.0);
+  float trans = 1.0;
+  float t = 0.6;
+  for (int i = 0; i < 30; i++){
+    vec3 p = ro + rd * t;
+    vec3 q = p * 0.55;
+    q += 0.8 * vec3(fbm(q * 0.7 + T * 0.01), fbm(q * 0.7 + 7.0), 0.0);
+    float n = fbm(q + vec3(0.0, 0.0, T * 0.02));
+    float dens = smoothstep(0.54, 0.86, n);
+    float core = smoothstep(0.70, 0.92, n);
+    float dt = 0.28 + t * 0.05;
+    vec3 c = pal(n * 0.7 + p.z * 0.02 + t * 0.012);
+    acc += trans * (c * dens * 0.30 + pal(n + 0.4) * core * 1.6 * (1.0 + A * 1.4)) * dt;
+    trans *= exp(-dens * dt * 0.7);
+    t += dt;
+    if (t > 24.0 || trans < 0.03) break;
+  }
+  // stars behind the cloud
+  vec3 sp = rd * 70.0 + vec3(0.0, 0.0, Z * 0.02);
+  vec3 id = floor(sp);
+  float h = hash(id);
+  float star = pow(max(0.0, h - 0.965) / 0.035, 2.0) * smoothstep(0.5, 0.0, length(fract(sp) - 0.5));
+  acc += trans * pal(h * 3.0) * star * 2.2 * (1.0 + A);
+  gl_FragColor = vec4(finish(acc, uv), 1.0);
+}`,
+    HEAD + `float map(vec3 p, out float orb){
+  vec3 z = p; float dr = 1.0, r = 0.0;
+  orb = 1e3;
+  float power = 7.0 + 1.6 * sin(T * 0.07) + A * 0.25;
+  for (int i = 0; i < 6; i++){
+    r = length(z);
+    if (r > 2.5) break;
+    float theta = acos(clamp(z.z / r, -1.0, 1.0));
+    float phi = atan(z.y, z.x);
+    dr = pow(r, power - 1.0) * power * dr + 1.0;
+    float zr = pow(r, power);
+    theta *= power; phi *= power;
+    z = zr * vec3(sin(theta) * cos(phi), sin(phi) * sin(theta), cos(theta)) + p;
+    orb = min(orb, dot(z, z));
+  }
+  return 0.5 * log(r) * r / dr;
+}
+void main(){
+  vec2 uv = (gl_FragCoord.xy - 0.5 * R) / R.y;
+  uv += Q * 0.012 * sin(uv.yx * 6.0 + T);
+  float a = T * 0.06 + M.x * 2.6, b = 0.35 * sin(T * 0.045) + M.y * 1.1;
+  float dist = 2.55 - W * 0.9;
+  vec3 ro = dist * vec3(cos(a) * cos(b), sin(b), sin(a) * cos(b));
+  vec3 fw = normalize(-ro), rt = normalize(cross(vec3(0.0, 1.0, 0.0), fw)), up = cross(fw, rt);
+  vec3 rd = normalize(fw * 1.35 + rt * uv.x + up * uv.y);
+  float t = 0.0;
+  vec3 acc = vec3(0.0);
+  float hitO = 0.0; bool hit = false;
+  for (int i = 0; i < 70; i++){
+    vec3 p = ro + rd * t;
+    float o;
+    float d = map(p, o);
+    acc += pal(log(o + 1.0) * 0.35 + T * 0.01) * exp(-d * 26.0) * 0.04 * (1.0 + A * 0.5);
+    if (d < 0.0009 * (1.0 + t)) {
+      float ao = 1.0 - float(i) / 70.0;
+      acc += pal(log(o + 1.0) * 0.9 + 0.15) * ao * ao * ao * 0.62;
+      hit = true; break;
+    }
+    t += d * 0.85;
+    if (t > 7.0) break;
+  }
+  gl_FragColor = vec4(finish(acc, uv), 1.0);
+}`
+  ];
+  const MODE_NAMES = ["Lattice", "Mandala", "Gyroid", "Nebula", "Bulb"];
+  const NMODES = SHADERS.length;
+
+  /* Each palette has its own colours and its own key, so changing colour changes the music with it. */
+  const SCALES = {
+    lydian:  [0, 2, 4, 6, 7, 9, 11],
+    dorian:  [0, 2, 3, 5, 7, 9, 10],
+    aeolian: [0, 2, 3, 5, 7, 8, 10]
+  };
+  const PALETTES = [
+    { name: "Prism", p: [[0.5, 0.5, 0.5], [0.5, 0.5, 0.5], [1, 1, 1], [0, 0.33, 0.67]], css: "linear-gradient(140deg,#ff7ad9,#7a5cff)", root: 50, scale: SCALES.lydian,  prog: [0, 4, 1, 3] },
+    { name: "Coral", p: [[0.8, 0.5, 0.4], [0.2, 0.4, 0.2], [2, 1, 1], [0, 0.25, 0.25]], css: "linear-gradient(140deg,#ffb199,#d2406a)", root: 45, scale: SCALES.dorian,  prog: [0, 3, 5, 4] },
+    { name: "Ice",   p: [[0.3, 0.4, 0.45], [0.3, 0.4, 0.4], [1, 1, 1], [0.55, 0.7, 0.8]], css: "linear-gradient(140deg,#c9f3ff,#2a8fd6)", root: 52, scale: SCALES.aeolian, prog: [0, 5, 2, 6] },
+    { name: "Gilt",  p: [[0.45, 0.4, 0.25], [0.4, 0.35, 0.25], [1, 1, 0.6], [0.85, 0.9, 0.3]], css: "linear-gradient(140deg,#fff0b8,#a8803a)", root: 48, scale: SCALES.lydian,  prog: [0, 1, 5, 4] }
+  ];
+  const TRIP = [{ name: "Calm", q: 0.0 }, { name: "Trip", q: 0.55 }, { name: "Deep", q: 1.0 }];
+  document.querySelectorAll(".dot").forEach((b, i) => { b.firstElementChild.style.background = PALETTES[i].css; });
+
+  /* ============ SOUND ============
+     Pads that beat against themselves, tape wobble, a sweeping phaser, echoes that bend.
+     Mandala adds a pulse with a sidechained pad, Gyroid adds a breathing drone and slow whale-like glides. */
+  const mtof = m => 440 * Math.pow(2, (m - 69) / 12);
+  const Sound = (() => {
+    let ctx = null, on = false, key = 0, mode = 0, tripIdx = 1, warp = 0;
+    let N = null, analyser = null, timer = null, noiseBuf = null;
+    let nextChord = 0, chordStep = 0, nextBell = 0, bellDeg = 15, nextStep = 0, stepIdx = 0, nextGlide = 0, barPat = 0;
+    let timeline = [];
+    const BPMS = [0, 104, 0, 0, 92];
+    const stepLen = () => 60 / (BPMS[mode] || 104) / 4;
+    const CHORD_LEN = [13, 64 * 60 / 104 / 4, 15, 17, 64 * 60 / 92 / 4];
+    const PAD_ATTACK = [4.5, 1.2, 5.5, 6.5, 0.9];
+    const PAD_FILTER = [700, 700, 700, 1000, 480];
+    const PD = { // per mode: echo time, echo send, drone, sub
+      0: { delay: 0.62, send: 0.45, drone: 0.0,  sub: 0.10 },
+      1: { delay: 60 / 104 * 0.75, send: 0.55, drone: 0.0, sub: 0.07 },
+      2: { delay: 0.93, send: 0.5,  drone: 0.30, sub: 0.14 },
+      3: { delay: 0.78, send: 0.62, drone: 0.12, sub: 0.08 },
+      4: { delay: 60 / 92 * 0.75, send: 0.5, drone: 0.22, sub: 0.12 }
+    };
+    const ARP_PATS = [
+      [0, -1, 2, 1, 3, -1, 2, 4, 5, 3, 2, -1, 4, 2, 1, 3],
+      [0, 2, 4, 2, 1, 3, 5, 3, 2, 4, 6, 4, 3, 1, -1, 2],
+      [0, -1, -1, 2, 4, -1, 3, 1, 0, -1, 2, 4, 5, -1, 4, 2],
+      [3, 2, 1, 0, 2, 1, 0, -1, 4, 3, 2, 1, 5, 4, 3, 2]
+    ];
+
+    const degNote = (P, d) => { const n = P.scale.length; return P.root + P.scale[((d % n) + n) % n] + 12 * Math.floor(d / n); };
+    const degAt = t => { let d = timeline.length ? timeline[0].deg : 0; for (const c of timeline) if (c.t <= t + 0.02) d = c.deg; return d; };
+
+    function makeIR(seconds, decay) {
+      const len = Math.floor(ctx.sampleRate * seconds);
+      const buf = ctx.createBuffer(2, len, ctx.sampleRate);
+      for (let c = 0; c < 2; c++) {
+        const d = buf.getChannelData(c); let lp = 0;
+        for (let i = 0; i < len; i++) {
+          lp += ((Math.random() * 2 - 1) - lp) * 0.35;
+          d[i] = lp * Math.pow(1 - i / len, decay);
+        }
+      }
+      return buf;
+    }
+    const mk = (type, v) => { const g = ctx[type](); if (v !== undefined) g.gain.value = v; return g; };
+
+    function build() {
+      const AC = window.AudioContext || window.webkitAudioContext;
+      if (!AC) return false;
+      ctx = new AC();
+      const master = mk("createGain", 0);
+      const comp = ctx.createDynamicsCompressor();
+      comp.threshold.value = -22; comp.ratio.value = 3.5; comp.attack.value = 0.02; comp.release.value = 0.35;
+      master.connect(comp); comp.connect(ctx.destination);
+
+      const rev = ctx.createConvolver(); rev.buffer = makeIR(7, 2.3);
+      const revOut = mk("createGain", 0.9); rev.connect(revOut); revOut.connect(master);
+      const dry = mk("createGain", 0.85); dry.connect(master);
+      const send = mk("createGain", 0.55); send.connect(rev);
+
+      // echoes that bounce left to right, darken as they repeat, and bend when the time changes
+      const ppIn = mk("createGain", 0.5);
+      const dL = ctx.createDelay(2), dR = ctx.createDelay(2);
+      dL.delayTime.value = 0.62; dR.delayTime.value = 0.62;
+      const lpL = ctx.createBiquadFilter(), lpR = ctx.createBiquadFilter();
+      lpL.type = lpR.type = "lowpass"; lpL.frequency.value = lpR.frequency.value = 1900;
+      const fbL = mk("createGain", 0.42), fbR = mk("createGain", 0.42);
+      const pL = ctx.createStereoPanner(), pR = ctx.createStereoPanner(); pL.pan.value = -0.75; pR.pan.value = 0.75;
+      const ppOut = mk("createGain", 1);
+      ppIn.connect(dL); dL.connect(lpL); lpL.connect(pL); pL.connect(ppOut);
+      lpL.connect(fbL); fbL.connect(dR); dR.connect(lpR); lpR.connect(pR); pR.connect(ppOut); lpR.connect(fbR); fbR.connect(dL);
+      ppOut.connect(dry); ppOut.connect(send);
+      const dlLfo = ctx.createOscillator(); dlLfo.frequency.value = 0.09;
+      const dlLfoG = mk("createGain", 900);
+      dlLfo.connect(dlLfoG); dlLfoG.connect(lpL.frequency); dlLfoG.connect(lpR.frequency); dlLfo.start();
+
+      // tape wobble shared by every pad voice
+      const detuneMod = mk("createGain", 1);
+      const wob = ctx.createOscillator(); wob.frequency.value = 0.27;
+      const wobG = mk("createGain", 12); wob.connect(wobG); wobG.connect(detuneMod); wob.start();
+      const vib = ctx.createOscillator(); vib.frequency.value = 5.1;
+      const vibG = mk("createGain", 3); vib.connect(vibG); vibG.connect(detuneMod); vib.start();
+
+      // slow vowel morph shared by the choir voices
+      const formLfo = ctx.createOscillator(); formLfo.frequency.value = 0.055; formLfo.start();
+      const formG1 = mk("createGain", 260), formG2 = mk("createGain", 420);
+      formLfo.connect(formG1); formLfo.connect(formG2);
+
+      // pad path: pump, filter sweep, phaser
+      const padBus = mk("createGain", 1);
+      const padDuck = mk("createGain", 1);
+      const padFilter = ctx.createBiquadFilter(); padFilter.type = "lowpass"; padFilter.frequency.value = 700; padFilter.Q.value = 0.6;
+      const fLfo = ctx.createOscillator(); fLfo.frequency.value = 0.045;
+      const fLfoG = mk("createGain", 280); fLfo.connect(fLfoG); fLfoG.connect(padFilter.frequency); fLfo.start();
+      padBus.connect(padDuck); padDuck.connect(padFilter);
+      const padOut = mk("createGain", 0.55);
+      const phWet = mk("createGain", 0.75);
+      const phLfo = ctx.createOscillator(); phLfo.frequency.value = 0.075; phLfo.start();
+      const phDepth = [];
+      let chain = padFilter;
+      [600, 1000, 1700, 2800].forEach(f => {
+        const ap = ctx.createBiquadFilter(); ap.type = "allpass"; ap.frequency.value = f; ap.Q.value = 0.9;
+        const dg = mk("createGain", f * 0.6); phLfo.connect(dg); dg.connect(ap.frequency); phDepth.push([dg, f]);
+        chain.connect(ap); chain = ap;
+      });
+      chain.connect(phWet); phWet.connect(padOut); padFilter.connect(padOut);
+      padOut.connect(dry); padOut.connect(send);
+
+      // lead-ish buses, metered so the picture can move with them
+      const meter = mk("createGain", 1);
+      analyser = ctx.createAnalyser(); analyser.fftSize = 512; meter.connect(analyser);
+      const bellBus = mk("createGain", 0.55); bellBus.connect(dry); bellBus.connect(send); bellBus.connect(ppIn); bellBus.connect(meter);
+      const arpBus = mk("createGain", 0.5); arpBus.connect(dry); arpBus.connect(send); arpBus.connect(ppIn); arpBus.connect(meter);
+      const lowBus = mk("createGain", 0.8); lowBus.connect(dry); lowBus.connect(meter);
+
+      // always-on low end: sub, plus a breathing drone for Gyroid
+      const sub = ctx.createOscillator(); sub.type = "sine"; sub.frequency.value = mtof(PALETTES[key].root - 12);
+      const subG = mk("createGain", 0.1); sub.connect(subG); subG.connect(lowBus); sub.start();
+      const drone = ctx.createOscillator(); drone.type = "sawtooth"; drone.frequency.value = mtof(PALETTES[key].root - 24);
+      const drone2 = ctx.createOscillator(); drone2.type = "sawtooth"; drone2.frequency.value = mtof(PALETTES[key].root - 24); drone2.detune.value = 8;
+      const droneF = ctx.createBiquadFilter(); droneF.type = "lowpass"; droneF.frequency.value = 240; droneF.Q.value = 3;
+      const droneG = mk("createGain", 0);
+      const breathe = mk("createGain", 0.5), breatheLfo = ctx.createOscillator(); breatheLfo.frequency.value = 0.19;
+      const breatheDepth = mk("createGain", 0.5); breatheLfo.connect(breatheDepth); breatheDepth.connect(breathe.gain); breatheLfo.start();
+      drone.connect(droneF); drone2.connect(droneF); droneF.connect(breathe); breathe.connect(droneG); droneG.connect(lowBus);
+      drone.start(); drone2.start();
+      const dfLfo = ctx.createOscillator(); dfLfo.frequency.value = 0.07; const dfG = mk("createGain", 120); dfLfo.connect(dfG); dfG.connect(droneF.frequency); dfLfo.start();
+
+      noiseBuf = ctx.createBuffer(1, ctx.sampleRate, ctx.sampleRate);
+      const nd = noiseBuf.getChannelData(0); for (let i = 0; i < nd.length; i++) nd[i] = Math.random() * 2 - 1;
+
+      N = { formG1, formG2, master, send, ppIn, dL, dR, fbL, fbR, detuneMod, wobG, vibG, padBus, padDuck, padFilter, phDepth, phWet, bellBus, arpBus, lowBus, sub, subG, drone, drone2, droneG, ppOut };
+      return true;
+    }
+
+    /* ---- instruments ---- */
+    function padVoice(freq, t, dur, attack, vol, shim) {
+      const g = mk("createGain");
+      g.gain.setValueAtTime(0.0001, t);
+      g.gain.linearRampToValueAtTime(vol, t + attack);
+      g.gain.setValueAtTime(vol, t + dur);
+      g.gain.linearRampToValueAtTime(0.0001, t + dur + 5.5);
+      g.connect(N.padBus);
+      [["sawtooth", 1, 9, -0.65, 0.17], ["sawtooth", 1, -9, 0.65, 0.17], ["triangle", 1, 0, 0, 0.8], ["sine", 2, 0, 0, shim === undefined ? 0.1 : shim]].forEach(([type, mul, cents, pan, amp]) => {
+        const o = ctx.createOscillator(); o.type = type; o.frequency.value = freq * mul; o.detune.value = cents;
+        N.detuneMod.connect(o.detune); o.onended = () => { try { N.detuneMod.disconnect(o.detune); } catch (e) {} };
+        const a = mk("createGain", amp), p = ctx.createStereoPanner(); p.pan.value = pan;
+        o.connect(a); a.connect(p); p.connect(g);
+        o.start(t); o.stop(t + dur + 6);
+      });
+    }
+    function choirVoice(freq, t, dur, attack, vol) {
+      const g = mk("createGain");
+      g.gain.setValueAtTime(0.0001, t); g.gain.linearRampToValueAtTime(vol, t + attack);
+      g.gain.setValueAtTime(vol, t + dur); g.gain.linearRampToValueAtTime(0.0001, t + dur + 6);
+      const p = ctx.createStereoPanner(); p.pan.value = Math.random() * 0.8 - 0.4; g.connect(p); p.connect(N.padBus);
+      const src = [];
+      [-6, 6].forEach(c => {
+        const o = ctx.createOscillator(); o.type = "sawtooth"; o.frequency.value = freq; o.detune.value = c;
+        N.detuneMod.connect(o.detune); o.onended = () => { try { N.detuneMod.disconnect(o.detune); } catch (e) {} };
+        src.push(o);
+      });
+      [[730, 8, 1, N.formG1], [1090, 9, 0.6, N.formG2], [2440, 10, 0.25, null]].forEach(([f, q, amp, lfo]) => {
+        const bp = ctx.createBiquadFilter(); bp.type = "bandpass"; bp.frequency.value = f; bp.Q.value = q;
+        if (lfo) { lfo.connect(bp.frequency); setTimeout(() => { try { lfo.disconnect(bp.frequency); } catch (e) {} }, (dur + 8) * 1000); }
+        const a = mk("createGain", amp); src.forEach(o => o.connect(bp)); bp.connect(a); a.connect(g);
+      });
+      src.forEach(o => { o.start(t); o.stop(t + dur + 7); });
+    }
+    function twinkle(t) {
+      const P = PALETTES[key];
+      const f = mtof(degNote(P, 14 + Math.floor(Math.random() * 11)));
+      const o = ctx.createOscillator(); o.type = "sine"; o.frequency.value = f;
+      const g = mk("createGain"); g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(0.07, t + 0.01); g.gain.exponentialRampToValueAtTime(0.0001, t + 1.6);
+      const p = ctx.createStereoPanner(); p.pan.value = Math.random() * 1.8 - 0.9;
+      o.connect(g); g.connect(p); p.connect(N.bellBus); o.start(t); o.stop(t + 1.7);
+    }
+    function playChord(t) {
+      const P = PALETTES[key];
+      const deg = P.prog[chordStep % P.prog.length]; chordStep++;
+      timeline.push({ t, deg }); if (timeline.length > 6) timeline.shift();
+      const vol = mode === 1 ? 0.12 : mode === 3 ? 0.08 : 0.13;
+      [0, 2, 4, 6].forEach((s, i) => padVoice(mtof(degNote(P, deg + s) - (i === 0 ? 12 : 0)), t, CHORD_LEN[mode] + 0.5, PAD_ATTACK[mode], vol, mode === 3 ? 0.3 : 0.1));
+      if (mode === 3) [0, 4, 7].forEach(s => choirVoice(mtof(degNote(P, deg + s) + 12), t, CHORD_LEN[mode] + 0.5, PAD_ATTACK[mode], 0.2));
+      N.sub.frequency.setTargetAtTime(mtof(degNote(P, deg) - 24 + 12), t, 0.8);
+      N.drone.frequency.setTargetAtTime(mtof(degNote(P, deg) - 24), t, 1.2);
+      N.drone2.frequency.setTargetAtTime(mtof(degNote(P, deg) - 24), t, 1.2);
+    }
+    function bell(t) {
+      const P = PALETTES[key];
+      const lo = mode === 2 ? 8 : 13, hi = mode === 2 ? 20 : 25;
+      bellDeg = Math.max(lo, Math.min(hi, bellDeg + [-2, -1, -1, 1, 1, 2, 3][Math.floor(Math.random() * 7)]));
+      const f = mtof(degNote(P, bellDeg));
+      const pan = ctx.createStereoPanner(); pan.pan.value = Math.random() * 1.4 - 0.7; pan.connect(N.bellBus);
+      const g = mk("createGain");
+      g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(0.26, t + 0.006); g.gain.exponentialRampToValueAtTime(0.0001, t + 3.6);
+      g.connect(pan);
+      [[1, 1, 3.6], [2.76, 0.28, 1.4], [5.4, 0.08, 0.5]].forEach(([mul, amp, len]) => {
+        const o = ctx.createOscillator(); o.type = "sine"; o.frequency.value = f * mul;
+        const a = mk("createGain"); a.gain.setValueAtTime(amp, t); a.gain.exponentialRampToValueAtTime(0.0001, t + len);
+        o.connect(a); a.connect(g); o.start(t); o.stop(t + len + 0.1);
+      });
+    }
+    function glide(t) {
+      const P = PALETTES[key];
+      const d = [7, 9, 11, 14][Math.floor(Math.random() * 4)];
+      const f1 = mtof(degNote(P, d)), f2 = f1 * Math.pow(2, ([-5, 7, 2, -7][Math.floor(Math.random() * 4)]) / 12);
+      const o = ctx.createOscillator(); o.type = "sine";
+      o.frequency.setValueAtTime(f1, t); o.frequency.exponentialRampToValueAtTime(f2, t + 5.5);
+      N.detuneMod.connect(o.detune); o.onended = () => { try { N.detuneMod.disconnect(o.detune); } catch (e) {} };
+      const g = mk("createGain");
+      g.gain.setValueAtTime(0.0001, t); g.gain.linearRampToValueAtTime(0.16, t + 2.4); g.gain.linearRampToValueAtTime(0.0001, t + 6.5);
+      const p = ctx.createStereoPanner(); p.pan.value = Math.random() * 1.2 - 0.6;
+      o.connect(g); g.connect(p); p.connect(N.bellBus); o.start(t); o.stop(t + 7);
+    }
+    function pluck(t, freq, accent) {
+      const o1 = ctx.createOscillator(), o2 = ctx.createOscillator();
+      o1.type = "sawtooth"; o2.type = "square"; o1.frequency.value = freq; o2.frequency.value = freq; o2.detune.value = 7;
+      const f = ctx.createBiquadFilter(); f.type = "lowpass"; f.Q.value = 6;
+      const q = TRIP[tripIdx].q;
+      const base = (700 + warp * 2600 + q * 900) * (1 + 0.55 * Math.sin(t * 0.33));
+      f.frequency.setValueAtTime(base * 3, t); f.frequency.exponentialRampToValueAtTime(Math.max(180, base * 0.35), t + 0.22);
+      const g = mk("createGain"); const v = accent ? 0.2 : 0.12;
+      g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(v, t + 0.004); g.gain.exponentialRampToValueAtTime(0.0001, t + 0.34);
+      const a1 = mk("createGain", 0.6), a2 = mk("createGain", 0.35);
+      const p = ctx.createStereoPanner(); p.pan.value = Math.random() * 0.8 - 0.4;
+      o1.connect(a1); o2.connect(a2); a1.connect(f); a2.connect(f); f.connect(g); g.connect(p); p.connect(N.arpBus);
+      o1.start(t); o2.start(t); o1.stop(t + 0.4); o2.stop(t + 0.4);
+    }
+    function kick(t, vol) {
+      const o = ctx.createOscillator(); o.type = "sine";
+      o.frequency.setValueAtTime(150, t); o.frequency.exponentialRampToValueAtTime(42, t + 0.15);
+      const g = mk("createGain");
+      g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(vol, t + 0.003); g.gain.exponentialRampToValueAtTime(0.0001, t + 0.42);
+      o.connect(g); g.connect(N.lowBus); o.start(t); o.stop(t + 0.45);
+      N.padDuck.gain.cancelScheduledValues(t); N.padDuck.gain.setValueAtTime(0.42, t); N.padDuck.gain.linearRampToValueAtTime(1, t + 0.36);
+    }
+    function hat(t) {
+      const s = ctx.createBufferSource(); s.buffer = noiseBuf;
+      const hp = ctx.createBiquadFilter(); hp.type = "highpass"; hp.frequency.value = 7500;
+      const g = mk("createGain"); g.gain.setValueAtTime(0.05, t); g.gain.exponentialRampToValueAtTime(0.0001, t + 0.06);
+      const p = ctx.createStereoPanner(); p.pan.value = Math.random() * 0.6 - 0.3;
+      s.connect(hp); hp.connect(g); g.connect(p); p.connect(N.arpBus); s.start(t, Math.random() * 0.8, 0.08);
+    }
+    function bass(t, freq) {
+      const o = ctx.createOscillator(); o.type = "sawtooth"; o.frequency.value = freq;
+      const f = ctx.createBiquadFilter(); f.type = "lowpass"; f.Q.value = 4;
+      f.frequency.setValueAtTime(700, t); f.frequency.exponentialRampToValueAtTime(140, t + 0.22);
+      const g = mk("createGain"); g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(0.2, t + 0.01); g.gain.exponentialRampToValueAtTime(0.0001, t + 0.3);
+      o.connect(f); f.connect(g); g.connect(N.lowBus); o.start(t); o.stop(t + 0.35);
+    }
+    function stepEvent4(t, i) {
+      const P = PALETTES[key];
+      const deg = degAt(t), s = i % 16, len = stepLen();
+      if (i % 16 === 0) barPat = Math.floor(Math.random() * ARP_PATS.length);
+      if (s === 0) kick(t, 0.8); else if (s === 10) kick(t, 0.5);
+      if (s % 2 === 0) { // trance gate on the pad
+        N.padDuck.gain.cancelScheduledValues(t); N.padDuck.gain.setValueAtTime(0.22, t); N.padDuck.gain.linearRampToValueAtTime(1, t + len * 1.7);
+      }
+      if ([0, 3, 6, 10, 12].includes(s)) bass(t, mtof(degNote(P, deg) - 24 + (s === 6 || s === 12 ? 12 : 0)));
+      const idx = ARP_PATS[barPat][s];
+      if (idx >= 0 && (s % 4 === 2 || s === 7 || s === 15) && Math.random() < 0.85) pluck(t, mtof(degNote(P, deg + idx + 14)), s === 2);
+    }
+    function stepEvent(t, i) {
+      if (mode === 4) return stepEvent4(t, i);
+      const P = PALETTES[key];
+      const deg = degAt(t);
+      if (i % 16 === 0) barPat = Math.floor(Math.random() * ARP_PATS.length);
+      const s = i % 16;
+      if (s === 0 || s === 8 || (s === 14 && Math.random() < 0.4)) kick(t, s === 0 ? 0.85 : 0.65);
+      if (s % 2 === 1) hat(t);
+      if (s === 0 || s === 6 || s === 10) bass(t, mtof(degNote(P, deg) - 24));
+      const idx = ARP_PATS[barPat][s];
+      if (idx >= 0 && Math.random() < 0.9) {
+        const jump = Math.random() < 0.12 ? 7 : 0;
+        pluck(t, mtof(degNote(P, deg + idx + 7 + jump)), s % 4 === 0);
+      }
+    }
+
+    function riser(dur) {
+      const t = ctx.currentTime + 0.05;
+      const s = ctx.createBufferSource(); s.buffer = noiseBuf; s.loop = true;
+      const bp = ctx.createBiquadFilter(); bp.type = "bandpass"; bp.Q.value = 2.2;
+      bp.frequency.setValueAtTime(260, t); bp.frequency.exponentialRampToValueAtTime(7500, t + dur);
+      const g = mk("createGain");
+      g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(0.24, t + dur);
+      g.gain.setValueAtTime(0.24, t + dur); g.gain.linearRampToValueAtTime(0.0001, t + dur + 0.12);
+      const pan = ctx.createStereoPanner();
+      const lfo = ctx.createOscillator(); lfo.frequency.setValueAtTime(0.3, t); lfo.frequency.exponentialRampToValueAtTime(6, t + dur);
+      const lg = mk("createGain", 0.9); lfo.connect(lg); lg.connect(pan.pan);
+      s.connect(bp); bp.connect(g); g.connect(pan); pan.connect(N.bellBus);
+      const o = ctx.createOscillator(); o.type = "sine";
+      o.frequency.setValueAtTime(50, t); o.frequency.exponentialRampToValueAtTime(200, t + dur);
+      const og = mk("createGain"); og.gain.setValueAtTime(0.0001, t); og.gain.exponentialRampToValueAtTime(0.14, t + dur); og.gain.linearRampToValueAtTime(0.0001, t + dur + 0.1);
+      o.connect(og); og.connect(N.lowBus);
+      s.start(t); lfo.start(t); o.start(t);
+      s.stop(t + dur + 0.2); lfo.stop(t + dur + 0.2); o.stop(t + dur + 0.2);
+    }
+    function portal() {
+      const t = ctx.currentTime + 0.02;
+      const o = ctx.createOscillator(); o.type = "sine";
+      o.frequency.setValueAtTime(120, t); o.frequency.exponentialRampToValueAtTime(26, t + 1.6);
+      const og = mk("createGain"); og.gain.setValueAtTime(0.0001, t); og.gain.exponentialRampToValueAtTime(0.55, t + 0.02); og.gain.exponentialRampToValueAtTime(0.0001, t + 2.0);
+      o.connect(og); og.connect(N.lowBus); o.start(t); o.stop(t + 2.1);
+      const s = ctx.createBufferSource(); s.buffer = noiseBuf; s.loop = true;
+      const bp = ctx.createBiquadFilter(); bp.type = "bandpass"; bp.Q.value = 1.4;
+      bp.frequency.setValueAtTime(7000, t); bp.frequency.exponentialRampToValueAtTime(220, t + 2.2);
+      const g = mk("createGain"); g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(0.3, t + 0.05); g.gain.exponentialRampToValueAtTime(0.0001, t + 2.4);
+      const pan = ctx.createStereoPanner(); pan.pan.setValueAtTime(-0.9, t); pan.pan.linearRampToValueAtTime(0.9, t + 2.0);
+      s.connect(bp); bp.connect(g); g.connect(pan); pan.connect(N.bellBus); s.start(t); s.stop(t + 2.5);
+    }
+
+    function tick() {
+      const now = ctx.currentTime;
+      while (nextChord < now + 1.2) { playChord(Math.max(nextChord, now + 0.05)); nextChord += CHORD_LEN[mode]; }
+      if (mode === 1 || mode === 4) {
+        const STEP = stepLen();
+        while (nextStep < now + 0.35) {
+          const swing = stepIdx % 2 ? STEP * (mode === 1 ? 0.13 : 0.05) : 0;
+          stepEvent(Math.max(nextStep + swing, now + 0.01), stepIdx);
+          nextStep += STEP; stepIdx++;
+        }
+      } else {
+        while (nextBell < now + 0.6) {
+          if (mode === 3) { twinkle(Math.max(nextBell, now + 0.02)); nextBell += (0.3 + Math.random() * 1.1) * (1 - 0.6 * warp); }
+          else { bell(Math.max(nextBell, now + 0.02)); nextBell += (1.6 + Math.random() * 2.6) * (1 - 0.7 * warp) * (mode === 2 ? 2.1 : 1); }
+        }
+        if ((mode === 2 || mode === 3) && nextGlide < now + 0.6) { glide(Math.max(nextGlide, now + 0.05)); nextGlide += (mode === 3 ? 10 : 7) + Math.random() * 6; }
+      }
+    }
+
+    function applyMode(t) {
+      const d = PD[mode];
+      N.dL.delayTime.setTargetAtTime(d.delay, t, 0.35); N.dR.delayTime.setTargetAtTime(d.delay, t, 0.35);
+      N.ppIn.gain.setTargetAtTime(d.send, t, 0.3);
+      N.droneG.gain.setTargetAtTime(d.drone, t, 1.2);
+      N.subG.gain.setTargetAtTime(d.sub, t, 0.6);
+      N.padDuck.gain.cancelScheduledValues(t); N.padDuck.gain.setTargetAtTime(1, t, 0.1);
+    }
+    function applyTrip(t) {
+      const q = TRIP[tripIdx].q;
+      N.wobG.gain.setTargetAtTime(5 + q * 20, t, 0.6);
+      N.vibG.gain.setTargetAtTime(2 + q * 6, t, 0.6);
+      N.fbL.gain.setTargetAtTime(0.32 + q * 0.3, t, 0.5); N.fbR.gain.setTargetAtTime(0.32 + q * 0.3, t, 0.5);
+      N.phWet.gain.setTargetAtTime(0.25 + q * 0.7, t, 0.6);
+      N.phDepth.forEach(([g, f]) => g.gain.setTargetAtTime(f * (0.15 + q * 0.75), t, 0.6));
+      N.send.gain.setTargetAtTime(0.45 + q * 0.3, t, 0.6);
+    }
+    function restartPhrase() {
+      const t = ctx.currentTime + 0.15;
+      chordStep = 0; bellDeg = mode === 2 ? 12 : 15; timeline = [];
+      nextChord = t; nextStep = t; stepIdx = 0; nextBell = t + 2; nextGlide = t + 4; nextBell = t + (mode === 3 ? 1.5 : 2);
+    }
+
+    return {
+      get on() { return on; },
+      async start() {
+        if (!ctx && !build()) return false;
+        await ctx.resume();
+        const now = ctx.currentTime;
+        if (!timer) { restartPhrase(); applyMode(now); applyTrip(now); tick(); timer = setInterval(tick, 200); }
+        N.master.gain.cancelScheduledValues(now); N.master.gain.setTargetAtTime(0.6, now, 1.4);
+        on = true; return true;
+      },
+      stop() {
+        if (!ctx) return;
+        const now = ctx.currentTime;
+        N.master.gain.cancelScheduledValues(now); N.master.gain.setTargetAtTime(0, now, 0.35);
+        on = false;
+        setTimeout(() => { if (!on && ctx) ctx.suspend(); }, 1600);
+      },
+      setKey(i) { key = i; if (ctx && timer) restartPhrase(); },
+      setMode(m) { mode = m; if (ctx && timer) { restartPhrase(); applyMode(ctx.currentTime); } },
+      setTrip(i) { tripIdx = i; if (ctx && N) applyTrip(ctx.currentTime); },
+      setWarp(w) { warp = w; if (ctx && N) N.padFilter.frequency.setTargetAtTime(PAD_FILTER[mode] + w * 2400, ctx.currentTime, 0.4); },
+      probe() { if (!ctx && !build()) return false; return ctx.state === "running"; },
+      riser(d) { if (ctx && N && on) riser(d); },
+      portal() { if (ctx && N && on) portal(); },
+      suspendForHidden(h) { if (!ctx || !on) return; h ? ctx.suspend() : ctx.resume(); },
+      level() {
+        if (!analyser || !on) return 0;
+        const d = new Uint8Array(analyser.fftSize); analyser.getByteTimeDomainData(d);
+        let s = 0; for (let i = 0; i < d.length; i++) { const v = (d[i] - 128) / 128; s += v * v; }
+        return Math.min(1, Math.sqrt(s / d.length) * 7);
+      }
+    };
+  })();
+
+  /* ============ PICTURE ============
+     Each world draws into a texture. A post pass adds colour split, video feedback and (at Deep) a mirrored overlay.
+     Changing world opens a portal between two textures instead of cutting. */
+  const canvas = document.getElementById("view");
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let gl = null, W = 0, H = 0, scale = 0.7;
+  const maxScale = 1;
+  const SCENE_PROGS = [];
+  let POST = null, TRANS = null, BLIT = null, TG = null, pflip = 0;
+  let mode = 0, trans = null, queuedMode = -1;
+  const TRANS_DUR = 2.4;
+  const SCENE_NAMES = ["R", "T", "Z", "M", "W", "A", "Q", "F", "H", "pa", "pb", "pc", "pd"];
+
+  const POST_FRAG = `precision highp float;
+uniform sampler2D tS; uniform sampler2D tP; uniform vec2 R; uniform float T; uniform float Q; uniform float A; uniform float H;
+mat2 rot(float a){ float c = cos(a), s = sin(a); return mat2(c, -s, s, c); }
+vec3 hue(vec3 c, float a){ vec3 k = vec3(0.57735); float co = cos(a), si = sin(a); return c * co + cross(k, c) * si + k * dot(k, c) * (1.0 - co); }
+void main(){
+  vec2 uv = gl_FragCoord.xy / R;
+  vec2 c = uv - 0.5;
+  float asp = R.x / R.y;
+  float K = smoothstep(0.62, 1.0, Q);
+  vec2 cc = vec2(c.x * asp, c.y);
+  float ang = atan(cc.y, cc.x), rad = length(cc);
+  float seg = 6.28318 / 6.0;
+  float fa = abs(mod(ang + T * 0.03, seg) - seg * 0.5);
+  vec2 fc = vec2(cos(fa), sin(fa)) * rad;
+  vec2 fuv = vec2(fc.x / asp, fc.y) + 0.5;
+  float ca = (0.0008 + 0.0065 * Q + 0.006 * A) * (0.4 + length(c) * 2.0);
+  vec2 d = normalize(c + 1e-5) * ca;
+  vec3 s = vec3(texture2D(tS, uv + d).r, texture2D(tS, uv).g, texture2D(tS, uv - d).b);
+  vec3 sk = vec3(texture2D(tS, fuv + d).r, texture2D(tS, fuv).g, texture2D(tS, fuv - d).b);
+  s = mix(s, max(s, sk * 0.85), K * 0.4);
+  vec2 pc = c * (1.0 - (0.004 + 0.012 * Q + 0.012 * A) * step(0.001, Q));
+  pc = rot(0.0025 * Q + 0.004 * Q * sin(T * 0.3)) * (pc * vec2(asp, 1.0)) / vec2(asp, 1.0);
+  vec3 prev = texture2D(tP, pc + 0.5).rgb;
+  prev = hue(prev, 0.022 * Q + 0.012 * K);
+  float decay = Q * (0.7 + 0.1 * K);
+  vec3 col = max(s, prev * decay - 0.012);
+  float l = dot(col, vec3(0.299, 0.587, 0.114));
+  col = mix(vec3(l), col, 1.0 + 0.22 * Q);
+  gl_FragColor = vec4(clamp(col, 0.0, 1.0), 1.0);
+}`;
+  const TRANS_FRAG = `precision highp float;
+uniform sampler2D tA; uniform sampler2D tB; uniform vec2 R; uniform float P; uniform float T;
+void main(){
+  vec2 uv = gl_FragCoord.xy / R;
+  float asp = R.x / R.y;
+  vec2 c = (uv - 0.5) * vec2(asp, 1.0);
+  float r = length(c);
+  float e = P * P * (3.0 - 2.0 * P);
+  float rf = e * 1.6 - 0.12;
+  float x = r - rf;
+  float ring = exp(-abs(x) * 9.0);
+  vec2 dir = normalize(c + 1e-5) / vec2(asp, 1.0);
+  vec2 w = dir * (sin(x * 38.0 - T * 6.0) * ring * 0.03 - x * ring * 0.12);
+  float m = 1.0 - smoothstep(-0.07, 0.07, x);
+  float ca = ring * 0.02;
+  vec3 a = vec3(texture2D(tA, uv + w + dir * ca).r, texture2D(tA, uv + w).g, texture2D(tA, uv + w - dir * ca).b);
+  vec3 b = vec3(texture2D(tB, uv + w + dir * ca).r, texture2D(tB, uv + w).g, texture2D(tB, uv + w - dir * ca).b);
+  vec3 col = mix(a, b, m);
+  col += vec3(0.8, 0.55, 1.0) * ring * ring * 0.5 * sin(P * 3.14159);
+  gl_FragColor = vec4(col, 1.0);
+}`;
+  const BLIT_FRAG = `precision mediump float;
+uniform sampler2D tS; uniform vec2 R;
+void main(){ gl_FragColor = vec4(texture2D(tS, gl_FragCoord.xy / R).rgb, 1.0); }`;
+
+  function compileProg(frag, names) {
+    const sh = (type, src) => {
+      const s = gl.createShader(type); gl.shaderSource(s, src); gl.compileShader(s);
+      if (!gl.getShaderParameter(s, gl.COMPILE_STATUS)) { console.error(gl.getShaderInfoLog(s)); return null; }
+      return s;
+    };
+    const vs = sh(gl.VERTEX_SHADER, VERT), fs = sh(gl.FRAGMENT_SHADER, frag);
+    if (!vs || !fs) return null;
+    const prog = gl.createProgram(); gl.attachShader(prog, vs); gl.attachShader(prog, fs); gl.linkProgram(prog);
+    if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) { console.error(gl.getProgramInfoLog(prog)); return null; }
+    const U = {}; names.forEach(n => { U[n] = gl.getUniformLocation(prog, n); });
+    return { prog, U, loc: gl.getAttribLocation(prog, "a") };
+  }
+  function bindProg(p) { gl.useProgram(p.prog); gl.enableVertexAttribArray(p.loc); gl.vertexAttribPointer(p.loc, 2, gl.FLOAT, false, 0, 0); }
+  function sceneProg(m) {
+    if (SCENE_PROGS[m] === undefined) SCENE_PROGS[m] = compileProg(SHADERS[m], SCENE_NAMES);
+    return SCENE_PROGS[m] || (m !== 0 ? sceneProg(0) : null);
+  }
+
+  function mkTarget() {
+    const tx = gl.createTexture(); gl.bindTexture(gl.TEXTURE_2D, tx);
+    gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, W, H, 0, gl.RGBA, gl.UNSIGNED_BYTE, null);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR); gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE); gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+    const f = gl.createFramebuffer(); gl.bindFramebuffer(gl.FRAMEBUFFER, f);
+    gl.framebufferTexture2D(gl.FRAMEBUFFER, gl.COLOR_ATTACHMENT0, gl.TEXTURE_2D, tx, 0);
+    gl.clearColor(0, 0, 0, 1); gl.clear(gl.COLOR_BUFFER_BIT);
+    return { t: tx, f };
+  }
+  function freeTargets() {
+    if (!TG) return;
+    [TG.S, TG.A, TG.B, TG.P[0], TG.P[1]].forEach(o => { gl.deleteTexture(o.t); gl.deleteFramebuffer(o.f); });
+    TG = null;
+  }
+  function allocTargets() {
+    freeTargets();
+    TG = { S: mkTarget(), A: mkTarget(), B: mkTarget(), P: [mkTarget(), mkTarget()] };
+    pflip = 0;
+  }
+  function init() {
+    gl = canvas.getContext("webgl", { antialias: false, alpha: false, powerPreference: "high-performance" });
+    if (!gl) { document.getElementById("fallback").style.display = "flex"; return false; }
+    SCENE_PROGS.length = 0; TG = null;
+    const buf = gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 3, -1, -1, 3]), gl.STATIC_DRAW);
+    POST = compileProg(POST_FRAG, ["tS", "tP", "R", "T", "Q", "A", "H"]);
+    TRANS = compileProg(TRANS_FRAG, ["tA", "tB", "R", "P", "T"]);
+    BLIT = compileProg(BLIT_FRAG, ["tS", "R"]);
+    if (!POST || !TRANS || !BLIT || !sceneProg(mode)) { document.getElementById("fallback").style.display = "flex"; return false; }
+    resize();
+    return true;
+  }
+  function resize() {
+    const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+    W = Math.max(2, Math.floor(window.innerWidth * dpr * scale));
+    H = Math.max(2, Math.floor(window.innerHeight * dpr * scale));
+    canvas.width = W; canvas.height = H;
+    if (gl) { gl.viewport(0, 0, W, H); allocTargets(); }
+  }
+  let rt = null;
+  window.addEventListener("resize", () => { clearTimeout(rt); rt = setTimeout(resize, 120); });
+
+  /* ---------- state shared with the shaders ---------- */
+  let T = 12, Z = 0, warp = 0, pulse = 0, hue = 0, Qs = 0.55, jb = 0;
+  const sm = { x: 0, y: 0 };
+  let pi = 0, tripIdx = 1, paused = false, audioTrip = -1;
+  const pcur = PALETTES[0].p.map(v => v.slice());
+
+  function setSceneUniforms(p) {
+    const U = p.U;
+    gl.uniform2f(U.R, W, H); gl.uniform1f(U.T, T); gl.uniform1f(U.Z, Z);
+    gl.uniform2f(U.M, sm.x, sm.y); gl.uniform1f(U.W, warp); gl.uniform1f(U.A, pulse);
+    gl.uniform1f(U.Q, Qs); gl.uniform1f(U.F, 1); gl.uniform1f(U.H, hue);
+    gl.uniform3fv(U.pa, pcur[0]); gl.uniform3fv(U.pb, pcur[1]); gl.uniform3fv(U.pc, pcur[2]); gl.uniform3fv(U.pd, pcur[3]);
+  }
+  function drawTo(fbo) {
+    gl.bindFramebuffer(gl.FRAMEBUFFER, fbo); gl.viewport(0, 0, W, H); gl.drawArrays(gl.TRIANGLES, 0, 3);
+  }
+  function renderScene(m, target) {
+    const p = sceneProg(m); bindProg(p); setSceneUniforms(p); drawTo(target.f);
+  }
+  function bindTex(unit, tex) { gl.activeTexture(gl.TEXTURE0 + unit); gl.bindTexture(gl.TEXTURE_2D, tex); }
+
+  function drawFrame() {
+    if (trans) {
+      renderScene(mode, TG.A); renderScene(trans.to, TG.B);
+      bindProg(TRANS);
+      bindTex(0, TG.A.t); bindTex(1, TG.B.t);
+      gl.uniform1i(TRANS.U.tA, 0); gl.uniform1i(TRANS.U.tB, 1);
+      gl.uniform2f(TRANS.U.R, W, H); gl.uniform1f(TRANS.U.P, trans.p); gl.uniform1f(TRANS.U.T, T);
+      drawTo(TG.S.f);
+    } else {
+      renderScene(mode, TG.S);
+    }
+    // colour split + feedback into the other post texture, then to the screen
+    const w = pflip, r = 1 - pflip;
+    bindProg(POST);
+    bindTex(0, TG.S.t); bindTex(1, TG.P[r].t);
+    gl.uniform1i(POST.U.tS, 0); gl.uniform1i(POST.U.tP, 1);
+    gl.uniform2f(POST.U.R, W, H); gl.uniform1f(POST.U.T, T); gl.uniform1f(POST.U.Q, Qs); gl.uniform1f(POST.U.A, pulse); gl.uniform1f(POST.U.H, hue);
+    drawTo(TG.P[w].f);
+    bindProg(BLIT);
+    bindTex(0, TG.P[w].t); gl.uniform1i(BLIT.U.tS, 0); gl.uniform2f(BLIT.U.R, W, H);
+    drawTo(null);
+    pflip = r;
+  }
+
+  /* ---------- input ---------- */
+  const mouse = { x: 0, y: 0, active: false, last: 0, down: false };
+  const hint = document.getElementById("hint");
+  const HINT_TEXT = hint.textContent;
+  setTimeout(() => { if (!soundPending) hint.classList.add("quiet"); }, 12000);
+  function touch(e) {
+    mouse.x = (e.clientX / window.innerWidth) * 2 - 1;
+    mouse.y = -((e.clientY / window.innerHeight) * 2 - 1);
+    mouse.active = true; mouse.last = performance.now();
+  }
+  canvas.addEventListener("pointermove", touch);
+  canvas.addEventListener("pointerdown", e => { canvas.setPointerCapture(e.pointerId); mouse.down = true; canvas.classList.add("down"); touch(e); });
+  const release = () => { mouse.down = false; canvas.classList.remove("down"); };
+  canvas.addEventListener("pointerup", release);
+  canvas.addEventListener("pointercancel", release);
+
+  /* ---------- controls ---------- */
+  const journey = { on: false, t0: 0, riser: false };
+  const DWELL = 10, BOOST_LEN = 4;
+  const target = () => (queuedMode >= 0 ? queuedMode : trans ? trans.to : mode);
+  function caption() {
+    document.getElementById("caption").textContent = (journey.on ? "Journey · " : "") + MODE_NAMES[target()] + " · " + PALETTES[pi].name;
+  }
+  function paintModeButtons() {
+    const m = target();
+    document.querySelectorAll(".modes .txt").forEach((b, n) => b.setAttribute("aria-pressed", n === m ? "true" : "false"));
+  }
+  function setPalette(i) {
+    pi = i; Sound.setKey(i); caption();
+    document.querySelectorAll(".dot").forEach((b, n) => b.setAttribute("aria-pressed", n === i ? "true" : "false"));
+  }
+  function startTransition(to) {
+    trans = { to, p: 0, fired: false };
+    Sound.portal();
+  }
+  function setMode(m) {
+    m = (m + NMODES) % NMODES;
+    if (trans) { if (m !== trans.to) queuedMode = m; else queuedMode = -1; }
+    else if (m !== mode) startTransition(m);
+    paintModeButtons(); caption();
+  }
+  const userMode = m => { if (journey.on) journey.t0 = performance.now(); journey.riser = false; setMode(m); };
+  function setTrip(i) {
+    tripIdx = (i + 3) % 3;
+    document.getElementById("tripLabel").textContent = TRIP[tripIdx].name;
+    document.getElementById("trip").setAttribute("aria-label", "Intensity: " + TRIP[tripIdx].name);
+  }
+  document.querySelectorAll(".dot").forEach(b => b.addEventListener("click", () => setPalette(+b.dataset.i)));
+  document.querySelectorAll(".modes .txt").forEach(b => b.addEventListener("click", () => userMode(+b.dataset.m)));
+  document.getElementById("trip").addEventListener("click", () => setTrip(tripIdx + 1));
+
+  // Journey: dwell in each world, build to a peak, then a portal into the next one with a new colour
+  const prog = document.getElementById("prog"), journeyBtn = document.getElementById("journey");
+  function toggleJourney() {
+    journey.on = !journey.on; journey.t0 = performance.now(); journey.riser = false;
+    journeyBtn.setAttribute("aria-pressed", journey.on ? "true" : "false");
+    prog.classList.toggle("on", journey.on);
+    if (!journey.on) prog.style.transform = "scaleX(0)";
+    caption();
+  }
+  journeyBtn.addEventListener("click", toggleJourney);
+  function toggleFull() {
+    const el = document.documentElement;
+    try {
+      if (document.fullscreenElement) document.exitFullscreen();
+      else if (el.requestFullscreen) el.requestFullscreen().catch(() => {});
+    } catch (e) {}
+  }
+  document.getElementById("full").addEventListener("click", toggleFull);
+
+  // Sound starts on. Browsers only allow audio after a touch, click or key press, so it begins on the first one.
+  const soundBtn = document.getElementById("sound"), soundLabel = document.getElementById("soundLabel");
+  let soundPending = true;
+  const GESTURES = ["pointerup", "click", "keydown", "touchend"];
+  function setSoundUi(on) {
+    soundBtn.setAttribute("aria-pressed", on ? "true" : "false");
+    soundLabel.textContent = on ? "Sound on" : "Sound";
+  }
+  function hintNormal() {
+    hint.textContent = HINT_TEXT; hint.classList.remove("pending", "quiet");
+    setTimeout(() => hint.classList.add("quiet"), 12000);
+  }
+  function armGestures(on) { GESTURES.forEach(ev => (on ? window.addEventListener : window.removeEventListener).call(window, ev, onGesture, true)); }
+  function onGesture(e) {
+    if (!soundPending) return;
+    if (e.target && e.target.closest && e.target.closest("#sound")) return;
+    if (e.type === "keydown" && (e.key === "m" || e.key === "M")) return;
+    beginSound();
+  }
+  async function beginSound() {
+    armGestures(false);
+    const ok = await Sound.start();
+    soundPending = false;
+    if (!ok) { soundBtn.setAttribute("aria-pressed", "false"); soundLabel.textContent = "No audio"; hintNormal(); return; }
+    setSoundUi(true); hintNormal();
+  }
+  async function toggleSound() {
+    if (soundPending) { soundPending = false; armGestures(false); hintNormal(); setSoundUi(false); return; }
+    if (Sound.on) Sound.stop();
+    else { const ok = await Sound.start(); if (!ok) { soundLabel.textContent = "No audio"; return; } }
+    setSoundUi(Sound.on);
+  }
+  soundBtn.addEventListener("click", toggleSound);
+  if (Sound.probe()) beginSound();
+  else { hint.textContent = "Touch anywhere to start the sound"; hint.classList.add("pending"); armGestures(true); }
+
+  window.addEventListener("keydown", e => {
+    if (e.key >= "1" && e.key <= "4") setPalette(+e.key - 1);
+    else if (e.key === "ArrowRight") userMode(target() + 1);
+    else if (e.key === "ArrowLeft") userMode(target() - 1);
+    else if (e.key === "j" || e.key === "J") toggleJourney();
+    else if (e.key === "f" || e.key === "F") toggleFull();
+    else if (e.key === "m" || e.key === "M") toggleSound();
+    else if (e.key === "t" || e.key === "T") setTrip(tripIdx + 1);
+    else if (e.code === "Space" && document.activeElement === document.body) { e.preventDefault(); paused = !paused; }
+  });
+  document.addEventListener("visibilitychange", () => Sound.suspendForHidden(document.hidden));
+
+  /* ---------- loop ---------- */
+  let last = performance.now(), acc = 0, frames = 0;
+  const baseSpeed = reduce ? 0.35 : 0.9;
+
+  function frame(now) {
+    requestAnimationFrame(frame);
+    const dt = Math.min(0.05, (now - last) / 1000); last = now;
+    if (paused || !TG) return;
+
+    // portal progress; the music changes world while the screen is mostly covered
+    if (trans) {
+      trans.p = Math.min(1, trans.p + dt / TRANS_DUR);
+      if (!trans.fired && trans.p > 0.4) { trans.fired = true; Sound.setMode(trans.to); }
+      if (trans.p >= 1) {
+        mode = trans.to; trans = null;
+        if (queuedMode >= 0 && queuedMode !== mode) { const q = queuedMode; queuedMode = -1; startTransition(q); }
+        else queuedMode = -1;
+      }
+    }
+
+    // journey schedule
+    let jbTarget = 0;
+    if (journey.on) {
+      const el = (now - journey.t0) / 1000;
+      prog.style.transform = "scaleX(" + Math.min(1, el / DWELL).toFixed(4) + ")";
+      if (el > DWELL - BOOST_LEN) {
+        const k = (el - (DWELL - BOOST_LEN)) / BOOST_LEN;
+        jbTarget = Math.min(1, k * k * (3 - 2 * k) * 1.1);
+        if (!journey.riser) { journey.riser = true; Sound.riser(BOOST_LEN - 0.6); }
+      }
+      if (el >= DWELL && !trans) {
+        journey.t0 = now; journey.riser = false;
+        setPalette((pi + 1) % PALETTES.length);
+        setMode(target() + 1);
+      }
+    }
+    jb += (jbTarget - jb) * (1 - Math.pow(jbTarget > jb ? 0.3 : 0.06, dt));
+
+    const idle = !mouse.active || now - mouse.last > 4000;
+    const tx = idle ? 0.55 * Math.sin(T * 0.13) : mouse.x;
+    const ty = idle ? 0.35 * Math.sin(T * 0.09 + 1.0) : mouse.y;
+    const k = 1 - Math.pow(0.02, dt);
+    sm.x += (tx - sm.x) * k; sm.y += (ty - sm.y) * k;
+    warp += ((mouse.down ? 1 : 0) - warp) * (1 - Math.pow(0.05, dt));
+    const qWant = Math.max(TRIP[tripIdx].q, jb);
+    Qs += (qWant - Qs) * (1 - Math.pow(0.1, dt));
+    const speed = baseSpeed + (warp + jb * 0.5) * 3.2 * (reduce ? 0.4 : 1);
+    T += dt; Z += dt * speed; hue += dt * (Qs * 0.018 + jb * 0.05) * (reduce ? 0.3 : 1);
+    Sound.setWarp(Math.max(warp, jb * 0.6));
+    const wantAudio = jb > 0.55 ? 2 : tripIdx;
+    if (wantAudio !== audioTrip) { audioTrip = wantAudio; Sound.setTrip(wantAudio); }
+
+    const lv = Sound.level();
+    pulse += (lv - pulse) * (lv > pulse ? 0.5 : 1 - Math.pow(0.15, dt));
+    for (let r = 0; r < 4; r++) for (let c = 0; c < 3; c++) pcur[r][c] += (PALETTES[pi].p[r][c] - pcur[r][c]) * (1 - Math.pow(0.12, dt));
+
+    drawFrame();
+
+    acc += dt; frames++;
+    if (frames === 40) {
+      const avg = acc / frames; acc = 0; frames = 0;
+      if (avg > 0.026 && scale > 0.36) { scale = Math.max(0.36, scale * 0.86); resize(); }
+      else if (avg < 0.0145 && scale < maxScale && !trans) { scale = Math.min(maxScale, scale * 1.08); resize(); }
+    }
+  }
+
+  canvas.addEventListener("webglcontextlost", e => e.preventDefault());
+  canvas.addEventListener("webglcontextrestored", () => { init(); });
+  if (init()) requestAnimationFrame(frame);
+})();
+</script>
+
+</body></html>
